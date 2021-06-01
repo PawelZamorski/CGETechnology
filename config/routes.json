@@ -1,0 +1,17 @@
+{    
+    "": {
+        "controller": "IncidentsController",
+        "method": "getAll"
+    },
+
+    "monthly": {
+        "controller": "IncidentsController",
+        "method": "getMonthly"
+    },
+
+    "sort-options": {
+        "controller": "IncidentsController",
+        "method": "getAllToSort"
+    }
+
+}

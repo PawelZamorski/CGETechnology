@@ -1,0 +1,34 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+    <h1 class="text-left">Display Data</h1>
+    <p>Comment: displays all data in a table in descending order according to Incident Date. Sorting is done in backend using php.</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Number</th>
+          <th scope="col">Incident Date</th>
+          <th scope="col">Project</th>
+          <th scope="col">Project Reference</th>
+          <th scope="col">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% for incident in incidents %}
+        <tr>
+          <th scope="row">{{ incident.getNumber }}</th>
+          <td>{{ incident.getIncidentdate }}</td>
+          <td>{{ incident.getProject }}</td>
+          <td>{{ incident.getProjectReference }}</td>
+          <td>{{ incident.getType }}</td>
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

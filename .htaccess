@@ -1,0 +1,8 @@
+# http://httpd.apache.org/docs/2.4/rewrite/intro.html#htaccess
+
+
+# The rules for localhost production and testing
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php/$1 [NC,QSA]

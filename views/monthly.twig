@@ -1,0 +1,42 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+    <h1 class="text-left">Display Data Monthly</h1>
+    <p>Comment: displays all data in 12 tabs as list.</p>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        {% for key, month in incidentsMonthly %}
+          {% if loop.first %}
+            <button class="nav-link active" id="nav-{{ key }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ key }}" type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{ key }}</button>
+          {% else %}
+            <button class="nav-link" id="nav-{{ key }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ key }}" type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{ key }}</button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      {% for key, month in incidentsMonthly %}
+          {% if loop.first %}
+            <div class="tab-pane fade show active" id="nav-{{ key }}" role="tabpanel" aria-labelledby="nav-profile-tab">
+          {% else %}
+            <div class="tab-pane fade" id="nav-{{ key }}" role="tabpanel" aria-labelledby="nav-profile-tab">
+          {% endif %}
+          <h3>Data From {{ key  }}</h3>
+            {% for incident in month %}
+            <ul class="list-group mt-4 col-6">
+              <li class="list-group-item active">Number: {{ incident.getNumber }}</li>
+              <li class="list-group-item">Incident Date:  {{ incident.getIncidentdate }}</li>
+              <li class="list-group-item">Project: {{ incident.getProject }}</li>
+              <li class="list-group-item">Project Reference: {{ incident.getProjectReference }}</li>
+              <li class="list-group-item">Type: {{ incident.getType }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
